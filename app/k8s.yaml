@@ -113,7 +113,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: gghcr.io/rohitti12/hackathon-frontend:latest
+        image: ghcr.io/rohitti12/hackathon-frontend:latest
         imagePullPolicy: IfNotPresent
         env:
           - name: OTEL_INSTRUMENTATION_ENABLED
