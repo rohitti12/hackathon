@@ -52,10 +52,10 @@ backend2-deployment-59d4b47774-xbq84   1/1     Running   0          62s
 frontend-deployment-678795956d-zwg4q   1/1     Running   0          62s
 ```
 
-Now port-forward the frontend app:
+Now expose the frontend app:
 
 ```bash
-kubectl port-forward service/frontend-service -n demo-app 4000:4000 
+kubectl apply -f https://raw.githubusercontent.com/rohitti12/hackathon/refs/heads/main/backend/frontend-ing.yaml
 ```
 
 Open browser at [http://localhost:4000/](http://localhost:4000/).

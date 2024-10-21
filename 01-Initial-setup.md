@@ -101,9 +101,6 @@ kubectl get svc -n ingress-nginx
 kubectl apply -f https://raw.githubusercontent.com/rohitti12/hackathon/refs/heads/main/backend/jaeger-ing.yaml
 ```
 
-```bash
-kubectl apply -f https://raw.githubusercontent.com/rohitti12/hackathon/refs/heads/main/backend/frontend-ing.yaml
-```
 ---
 
 [Next steps](./02-tracing-introduction.md)
