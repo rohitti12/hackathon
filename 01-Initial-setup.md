@@ -87,6 +87,23 @@ kubectl port-forward -n observability-backend service/jaeger-query 16686:16686
 
 Open it in the browser [localhost:16686](http://localhost:16686/)
 
+Deploy Nginx Ingress controller
+
+```bash
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.12.0-beta.0/deploy/static/provider/aws/deploy.yaml
+```
+
+```bash
+kubectl get svc -n ingress-nginx
+```
+
+```bash
+kubectl apply -f https://raw.githubusercontent.com/rohitti12/hackathon/refs/heads/main/backend/jaeger-ing.yaml
+```
+
+```bash
+kubectl apply -f https://raw.githubusercontent.com/rohitti12/hackathon/refs/heads/main/backend/frontend-ing.yaml
+```
 ---
 
 [Next steps](./02-tracing-introduction.md)
