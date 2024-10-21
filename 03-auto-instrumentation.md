@@ -43,14 +43,13 @@ sequenceDiagram
 Deploy the application into the kubernetes cluster. The app will be deployed into `demo-app` namespace.
 
 ```bash
-kubectl apply -f https://raw.githubusercontent.com/pavolloffay/kubecon-eu-2024-opentelemetry-kubernetes-tracing-tutorial/main/app/k8s.yaml
+kubectl apply -f https://raw.githubusercontent.com/rohitti12/hackathon/refs/heads/main/app/k8s.yaml
 kubectl get pods -n demo-app -w
 ...
 NAME                                   READY   STATUS    RESTARTS   AGE
 backend1-deployment-577cf945b4-tz5kv   1/1     Running   0          62s
 backend2-deployment-59d4b47774-xbq84   1/1     Running   0          62s
 frontend-deployment-678795956d-zwg4q   1/1     Running   0          62s
-loadgen-deployment-5c7d6896f8-2fz6h    1/1     Running   0          62s
 ```
 
 Now port-forward the frontend app:
@@ -94,7 +93,7 @@ Deploy OpenTelemetry collector that will receive data from the instrumented work
 See the [OpenTelemetryCollector CR](./backend/03-collector.yaml).
 
 ```bash
-kubectl apply -f https://raw.githubusercontent.com/pavolloffay/kubecon-eu-2024-opentelemetry-kubernetes-tracing-tutorial/main/backend/03-collector.yaml
+kubectl apply -f https://raw.githubusercontent.com/rohitti12/hackathon/refs/heads/main/backend/03-collector.yaml
 kubectl get pods -n observability-backend -w
 ```
 
@@ -107,14 +106,13 @@ First the Instrumentation CR needs to be created in the `demo-app` namespace:
 See the [Instrumentation CR](./app/instrumentation.yaml).
 
 ```bash
-kubectl apply -f https://raw.githubusercontent.com/pavolloffay/kubecon-eu-2024-opentelemetry-kubernetes-tracing-tutorial/main/app/instrumentation.yaml
+kubectl apply -f https://raw.githubusercontent.com/rohitti12/hackathon/refs/heads/main/app/instrumentation.yaml
 kubectl get pods -n demo-app -w
 ...                                                                                                                                                                                                                                                                                        
 NAME                                   READY   STATUS    RESTARTS   AGE
 backend1-deployment-577cf945b4-tz5kv   1/1     Running   0          8m59s
 backend2-deployment-59d4b47774-xbq84   1/1     Running   0          8m59s
 frontend-deployment-678795956d-zwg4q   1/1     Running   0          8m59s
-loadgen-deployment-5c7d6896f8-2fz6h    1/1     Running   0          8m59s
 ```
 
 The `Instrumentation` CR does not instrument the workloads. The instrumentation needs to be enabled by annotating a pod:
@@ -149,7 +147,7 @@ Init Containers:
       /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-48z6x (ro)
 Containers:
   backend2:
-    Image:          ghcr.io/pavolloffay/kubecon-eu-2024-opentelemetry-kubernetes-tracing-tutorial-backend2:latest
+    Image:          ghcr.io/rohitti12/hackathon-backend2:latest
     Environment:
       OTEL_LOGS_EXPORTER:                  otlp
       JAVA_TOOL_OPTIONS:                    -javaagent:/otel-auto-instrumentation-java/javaagent.jar
@@ -190,7 +188,7 @@ See the [Java agent docs](https://opentelemetry.io/docs/languages/java/automatic
 See the [Instrumentation CR](./app/instrumentation-java-custom-config.yaml).
 
 ```bash
-kubectl apply -f https://raw.githubusercontent.com/pavolloffay/kubecon-eu-2024-opentelemetry-kubernetes-tracing-tutorial/main/app/instrumentation-java-custom-config.yaml
+kubectl apply -f https://raw.githubusercontent.com/rohitti12/hackathon/refs/heads/main/app/instrumentation-java-custom-config.yaml
 kubectl rollout restart deployment.apps/backend2-deployment -n demo-app
 kubectl get pods -w -n demo-app
 ```
