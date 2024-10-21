@@ -76,7 +76,7 @@ your application _manually_ or _automatically_:
   also valuable for Application Operators, who have no access or insights about the
   source code.
 
-In this chapter we will cover using OpenTelemetry auto-instrumentation.
+In this demo we will cover using OpenTelemetry auto-instrumentation.
 
 ## Instrument the demo application
 
