@@ -26,7 +26,7 @@ spec:
     spec:
       containers:
       - name: backend1
-        image: ghcr.io/rohitti12/backend1:latest
+        image: ghcr.io/rohitti12/hackathon-backend1:latest
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 5000
@@ -70,7 +70,7 @@ spec:
     spec:
       containers:
       - name: backend2
-        image: ghcr.io/rohitti12/backend2:latest
+        image: ghcr.io/rohitti12/hackathon-backend2:latest
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 5165
@@ -113,7 +113,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: ghcr.io/rohitti12/frontend:latest
+        image: gghcr.io/rohitti12/hackathon-frontend:latest
         imagePullPolicy: IfNotPresent
         env:
           - name: OTEL_INSTRUMENTATION_ENABLED
